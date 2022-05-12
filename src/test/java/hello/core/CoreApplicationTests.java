@@ -9,5 +9,5 @@ class CoreApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
+//오늘은쉬어야돼
 }
