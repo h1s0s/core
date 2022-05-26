@@ -2,13 +2,11 @@ package hello.core.singleton;
 
 import hello.core.AppConfig;
 import hello.core.member.MemberService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SingletonTest {
 
@@ -45,10 +43,13 @@ public class SingletonTest {
     }
 
     /*
-싱글톤 컨테이너
-스프링 컨테이너는 싱글톤 패턴의 문제점을 해결하면서, 객체 인스턴스를 싱글톤(1개만 생성)으로 관리한다.
-지금까지 우리가 학습한 스프링 빈이 바로 싱글톤으로 관리되는 빈이다
- */
+        싱글톤 컨테이너
+        스프링 컨테이너는 싱글톤 패턴의 문제점을 해결하면서, 객체 인스턴스를 싱글톤(1개만 생성)으로 관리한다.
+        지금까지 우리가 학습한 스프링 빈이 바로 싱글톤으로 관리되는 빈이다
+        참고: 스프링의 기븐 빈 등록 방식은 싱글톤이지만, 싱글톤 방식만 지원하는 것은 아니다
+        요청할 때마다 새로운 객체를 생성해서 반환하는 기능도 제공한다.
+        자세한 내용은 뒤에 빈 스코프에서 설명하겠다.
+    */
     @Test
     @DisplayName("스프링 컨테이너와 싱클톤")
     void springContainer() {
