@@ -26,4 +26,16 @@ public class SingletonTest {
         //고객 트래픽이 초당 100이 나오면 초당 100개 객체가 생성되고 소멸된다 -> 메모리 낭비가 심하다
         //해결방안은 해당 객체가 딱 1개만 생성되고 공유하도록 설계하면 된다 -> 싱글톤 패턴
     }
+
+    @Test
+    @DisplayName("싱글톤 패턴을 적용한 객체 사용")
+    void singletonServiceTest() {
+        SingletonService singletonService = SingletonService.getInstance();
+        SingletonService singletonService1 = SingletonService.getInstance();
+
+        System.out.println("singletonService = " + singletonService);
+        System.out.println("singletonService1 = " + singletonService1);
+
+        Assertions.assertThat(singletonService1).isSameAs(singletonService);
+    }
 }
