@@ -5,6 +5,8 @@ import hello.core.member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -40,5 +42,27 @@ public class SingletonTest {
 
         assertThat(singletonService1).isSameAs(singletonService);
         //호출할때마다 같은 객체를 반환하는 것을 확인할 수 있다.
+    }
+
+    /*
+싱글톤 컨테이너
+스프링 컨테이너는 싱글톤 패턴의 문제점을 해결하면서, 객체 인스턴스를 싱글톤(1개만 생성)으로 관리한다.
+지금까지 우리가 학습한 스프링 빈이 바로 싱글톤으로 관리되는 빈이다
+ */
+    @Test
+    @DisplayName("스프링 컨테이너와 싱클톤")
+    void springContainer() {
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        //1. 조회 : 호출할 때마다 객체를 생성
+        MemberService memberService1 = ac.getBean("memberService", MemberService.class);
+        MemberService memberService2 = ac.getBean("memberService", MemberService.class);
+
+        //참조값이 다른 것을 확인
+        System.out.println("memberService1 = " + memberService1);
+        System.out.println("memberService2 = " + memberService2);
+
+        //memberService1 != memberService2
+        assertThat(memberService1).isSameAs(memberService2);
     }
 }
