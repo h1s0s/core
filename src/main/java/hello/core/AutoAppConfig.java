@@ -17,6 +17,11 @@ import static org.springframework.context.annotation.ComponentScan.*;
 
 @Configuration
 @ComponentScan(
+        /* 이 두개를 지정하지 않으면, AutoAppConfig를 기준으로 탐색함
+        그렇기 때문에 컴포넌트 스캔 설정정보 클래스를 프로젝트 최상단에 두는걸 권장함
+        basePackages = "hello.core.member", //어디서부터 탐색을 시작할지 지정
+        basePackageClasses = AutoAppConfig.class, //지정한 클래스를 탐색위치로 지정
+        */
         excludeFilters =  @Filter(type = FilterType.ANNOTATION,
         classes = Configuration.class))
 public class AutoAppConfig {
