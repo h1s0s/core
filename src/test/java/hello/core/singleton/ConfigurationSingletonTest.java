@@ -40,5 +40,12 @@ public class ConfigurationSingletonTest {
         AppConfig bean = ac.getBean(AppConfig.class);
 
         System.out.println("bean = " + bean.getClass());
+        /*
+            @Bean이 붙은 메서드마다 이미 스프링 빈이 존재하면 존재하는 빈을 반환하고, 스프링 빈이 없으면
+            생성해서 스프링 빈으로 등록하고 반환하는 코드가 동적으로 만들어진다
+            따라서 싱글톤이 보장되는 것이다
+            @Configuration을 붙이면 바이트코드를 조작하는 CGLIB 기술을 이용해서 싱글톤을 보장하지만
+            @Bean만 적용하면 ? 싱글톤이 깨짐
+         */
     }
 }

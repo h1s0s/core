@@ -7,7 +7,9 @@ import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
@@ -30,6 +32,7 @@ public class OrderServiceImpl implements OrderService{
     //생성자를 통해 어떤 구현 객체를 주입할지는 오직 외부('AppConfig')에서 결정된다.
     //이제부터 의존관계에 대한 고민은 외부에 맡기고 실행에만 집중하면 된다.
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
