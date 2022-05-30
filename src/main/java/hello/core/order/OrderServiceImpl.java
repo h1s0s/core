@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
     //기존 코드1 : private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     //기존 코드2 : private final DiscountPolicy discountPolicy = new RateDiscountPolicy();

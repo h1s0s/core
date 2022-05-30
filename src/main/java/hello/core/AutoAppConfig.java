@@ -28,9 +28,9 @@ public class AutoAppConfig {
 
     //자동 빈 등록 vs 자동 빈 등록 = 충돌
     //자동 빈 등록 vs 수동 빈 등록 = 수동 빈 등록이 우선
-    @Bean(name = "memoryMemberRepository")
-    MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name = "memoryMemberRepository")
+//    MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 
 }
