@@ -1,19 +1,13 @@
 package hello.core;
 
-import hello.core.discount.DiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemberService;
-import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
-import hello.core.order.OrderService;
-import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
-import static org.springframework.context.annotation.ComponentScan.*;
+import static org.springframework.context.annotation.ComponentScan.Filter;
 
 @Configuration
 @ComponentScan(
@@ -30,4 +24,13 @@ public class AutoAppConfig {
     //excludeFilters는 자동으로 등록되지 않게 빼주는 기능
     //보통 설정정보를 실무에서 제외하진 않음
     //또 의존관계 주입도 자동으로 하는 @Autowired라는 기능도 제공한다
+
+
+    //자동 빈 등록 vs 자동 빈 등록 = 충돌
+    //자동 빈 등록 vs 수동 빈 등록 = 수동 빈 등록이 우선
+    @Bean(name = "memoryMemberRepository")
+    MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
 }
